@@ -1,0 +1,92 @@
+﻿@model SuperMarketManagement.Models.UserMaster
+
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<h1>SignUp</h1>
+
+<h4>User Registration</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SignUp">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" style="display:none">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fName" class="control-label"></label>
+                <input asp-for="fName" class="form-control" />
+                <span asp-validation-for="fName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LName" class="control-label"></label>
+                <input asp-for="LName" class="form-control" />
+                <span asp-validation-for="LName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DoB" class="control-label"></label>
+                <input asp-for="DoB" class="form-control" />
+                <span asp-validation-for="DoB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <select class="form-group">
+                    <option value="">--Choose Gender---</option>
+                    <option value="Female">Female</option>
+                    <option value="Female">Male</option>
+                </select>
+                @*<input asp-for="Gender" class="form-control" />*@
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contactnumber" class="control-label"></label>
+                <input asp-for="Contactnumber" class="form-control" />
+                <span asp-validation-for="Contactnumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CPassword" class="control-label"></label>
+                <input asp-for="CPassword" class="form-control" />
+                <span asp-validation-for="CPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3 mb-3">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+    <a href="~/User/Login">Already have an Account Click Here....To Login</a>
+@*<div>
+    <a asp-action="SignUp">Back to List</a>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<body class="hold-transition signup-page">
+     </body>
+     <style>
+.signup-page{
+    background-image:url("https://t3.ftcdn.net/jpg/03/55/60/70/360_F_355607062_zYMS8jaz4SfoykpWz5oViRVKL32IabTP.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+     </style>

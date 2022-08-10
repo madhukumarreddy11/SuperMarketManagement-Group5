@@ -1,0 +1,81 @@
+﻿@model SuperMarketManagement.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group"style="display:none">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group"style="display:none">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>     
+            <div class="form-group mt-3">
+                <label asp-for="UserId" class="control-label"></label>
+                    
+                <input  asp-for="UserId" class="form-control"/>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+     
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input type="Password" asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group"style="display:none">
+                <label asp-for="RoleId" class="control-label"></label>
+                <input asp-for="RoleId" class="form-control" />
+                <span asp-validation-for="RoleId" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3 mb-3">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+         </form>
+    </div>
+</div>
+     <a href="~/User/Category"> Click Here....To SignUp</a>
+     
+     
+
+@*<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+*@
+@{
+    try
+    {
+        if(TempData["Msg"] !=null)
+        {
+    <script>
+                                swal("Incorrect UserId/Password");
+    </script>
+        }
+    }
+    catch
+    {
+        
+    }
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<body class="hold-transition login-page">
+     </body>
+     <style>
+.login-page{
+    background-image:url("https://t3.ftcdn.net/jpg/03/55/60/70/360_F_355607062_zYMS8jaz4SfoykpWz5oViRVKL32IabTP.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+     </style>

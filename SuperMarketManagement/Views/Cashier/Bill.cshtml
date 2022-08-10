@@ -1,0 +1,52 @@
+﻿<div class="container mb-5">
+    <a href="~/Cashier/AddBill" class="btn btn-success">Add Product</a>
+</div>
+    <h2>Total Bill</h2>
+
+<div class="container">
+    <table class="table table-bordered table-hover">
+        <tr class="bg-success text-white">
+            <th>Id</th>
+            <th>Product Name</th>
+            <th>Product Category</th>
+            <th>Ouantity</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        @{
+            try
+            {
+                if(TempData["Bill"]!=null)
+                {
+                    foreach(var x in (List<SuperMarketManagement.Models.Bill>)TempData["Bill"])
+                    {
+                        <tr>
+                        <td>@x.Id</td>
+                        <td>@x.ProductName</td>
+                        <td>@x.ProductCategory</td>
+                        <td>@x.Quantity</td>
+                        <td>@x.Price</td>
+                        <td>
+                        <a href="~/Cashier/EditBill?id=@x.Id" class="btn btn-success">Edit</a></td>
+                        
+                        </tr>
+                    }
+                }
+            }
+            catch
+            {
+                
+            }
+        }
+    </table>
+
+</div>
+<body class="hold-transition bill-page">
+     </body>
+     <style>
+.bill-page{
+    background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGhU5KT5xyk-TUhEM0EOPvtyoNeN-L11_RppMukxE1-jzypEt9w3XPOWCNgg1GwZO5Z6I&usqp=CAU");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+     </style>

@@ -1,0 +1,164 @@
+﻿<div class="container mb-3">
+    <a href="~/Manager/Add" class="btn btn-success">Add Product</a>
+</div>
+
+<div class="container">
+
+     <div class="f-group">
+        <label for="">Category</label>
+        <select name="slct1" id="slct1" onchange="populate(this.id,'slct2')">
+            <option value="">---Choose Category---</option>
+            <option value="fruits">Fruits</option>
+            <option value="vegetables">Vegetables</option>
+            <option value="dairyProducts">DairyProducts</option>
+            <option value="stationary">Satationary</option>
+            <option value="bevarages">Bevarages</option>
+            <option value="choclates">Choclates</option>
+            <option value="soaps">Soaps</option>
+
+        </select>
+
+    </div>
+
+     <div class="f-group mt-3">
+         <label for="">Items</label>
+         <select name="slct2" id="slct2">
+         <option value="">---Items---</option>
+         </select>
+     </div>
+</div>
+
+     <script>
+
+    function populate(s1,s2)
+    {
+        var s1=document.getElementById(s1);
+        var s2=document.getElementById(s2);
+        s2.innerHTML= "";
+
+        if(s1.value=="fruits")
+        {
+            var optionArray=['apple|Apple','mango|Mango','pomo|Pomo','pineapple|PineApple','lichi|Lichi','watermelon|Watermelon','orange|Orange']
+        }
+        else if(s1.value=="vegetables")
+        {
+             var optionArray=['carrot|Carrot','beetroot|Beetroot','tomato|Tomato','palak|Palak','potato|Potato','greenchilli|Greenchilli','redcappsicum|RedCapsicum']
+        }
+        else if(s1.value=="dairyProducts")
+        {
+             var optionArray=['curd|Curd','milk|Milk','cheese|Cheese','butter|Butter','lassi|Lassi','dairymilk|DairyMilk','panner|paneer']
+        }
+         else if(s1.value=="stationary")
+        {
+             var optionArray=['pen|Pen','pencil|Pencil','eraser|Eraser','scale|Scale','sharpener|Sharpener','a4sheets|A4sheets','compass|Compass']
+        }
+         else if(s1.value=="bevarages")
+        {
+             var optionArray=['sprite|Sprite','maaza|Maaza','limca|Limca','fanta|Fanta','pepsi|Pepsi','coca cola|Coca Cola','appy fizz|Appy Fizz']
+        }
+         else if(s1.value=="choclates")
+        {
+             var optionArray=['dairy mik|Dairy Milk','5star|5Star','snickers|Snickers','perk|Perk','milky bar|Milky Bar','kit kat|Kit Kat','caramel|Caramel']
+        }
+         else if(s1.value=="soaps")
+        {
+             var optionArray=['cinthol|Cinthol','lux|Lux','dove|Dove','himalaya|Himalaya','patanjali|Patanjali','pears|Pears','life buoy|Life Bouy']
+        }
+        for(var option in optionArray)
+        {
+            var pair=optionArray[option].split("|");
+            var newoption =document.createElement("option");
+
+            newoption.value=pair[0];
+            newoption.innerHTML=pair[1];
+            s2.options.add(newoption);
+        }
+    }
+</script>
+
+<div class="container">
+
+    <table class="table table-bordered table-hover mt-3">
+        <tr class="bg-success text-white">
+            <th>Id</th>
+            <th>Product Name</th>
+            <th>Product Category</th>
+            <th>Ouantity</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        @{
+            try
+            {
+                if(TempData["Product"]!=null)
+                {
+                    foreach(var x in (List<SuperMarketManagement.Models.Product>)TempData["Product"])
+                    {
+                        <tr>
+                        <td>@x.Id</td>
+                        <td>@x.ProductName</td>
+                        <td>@x.ProductCategory</td>
+                        <td>@x.Quantity</td>
+                        <td>@x.Price</td>
+                        <td>
+                         <a href="~/Manager/Edit?id=@x.Id" class="btn btn-success">Update</a>
+
+                         <a href="~/Manager/Delete?id=@x.Id" class="btn btn-danger" style="margin-left:3%">Delete</a>
+
+                        </td>
+                        </tr>
+                    }
+                }
+            }
+            catch
+            {
+                
+            }
+        }
+    </table>
+
+</div>
+
+
+
+@{
+    try
+    {
+        if(TempData["EditMsg"] !=null)
+        {
+              <script>
+                swal("Good job!", "Data Updated Sucecssfully!", "success");
+           </script>
+        }
+    }
+    catch
+    {
+        
+    }
+}
+
+@{
+    try
+    {
+        if(TempData["DeleteMsg"] !=null)
+        {
+              <script>
+                swal("Good job!", "Data Deleted Sucecssfully!", "success");
+           </script>
+        }
+    }
+    catch
+    {
+        
+    }
+}
+<body class="hold-transition product-page">
+     </body>
+     <style>
+.product-page{
+    background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGhU5KT5xyk-TUhEM0EOPvtyoNeN-L11_RppMukxE1-jzypEt9w3XPOWCNgg1GwZO5Z6I&usqp=CAU");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+     </style>
+

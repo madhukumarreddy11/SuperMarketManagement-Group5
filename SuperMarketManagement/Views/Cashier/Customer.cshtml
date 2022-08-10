@@ -1,0 +1,61 @@
+﻿@model SuperMarketManagement.Models.Customer
+
+@{
+    ViewData["Title"] = "Customer";
+}
+
+<h1>Customer Details</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Customer">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group d-none">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DoB" class="control-label"></label>
+                <input asp-for="DoB" class="form-control" />
+                <span asp-validation-for="DoB" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@*<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<body class="hold-transition customer-page">
+     </body>
+     <style>
+.customer-page{
+    background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGhU5KT5xyk-TUhEM0EOPvtyoNeN-L11_RppMukxE1-jzypEt9w3XPOWCNgg1GwZO5Z6I&usqp=CAU");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+     </style>
